@@ -7,12 +7,12 @@ const Student = require('../models/student');
 //for student list
 //http://localhost:3000/api/students
 
-router.get('/', function (req, res) {
-    Student.find({}, function (err, student) {
-        res.json(student);
-    });
+// router.get('/', function (req, res) {
+//     Student.find({}, function (err, student) {
+//         res.json(student);
+//     });
 
-});
+// });
 router.get('/:id', function (req, res) {
     Student.findOne({
         _id: req.params.id
@@ -49,7 +49,7 @@ router.get('/',function(req,res){
 //college id fetch from students connect reference college table in home page
 router.get('/',function(req,res){
     student.find({})
-    .populate('coll_id',"name-_id")
+    .populate('college',"name-_id")
     .then(function(student){
         res.json(student)
     })
